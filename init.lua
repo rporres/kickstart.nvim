@@ -546,6 +546,12 @@ require('lazy').setup({
           --  For example, in C this would take you to the header.
           map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+          -- Go to definition in a new tab
+          map('grT', function()
+            vim.cmd('tab split')
+            vim.lsp.buf.definition()
+          end, '[G]oto Definition in new [T]ab')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
