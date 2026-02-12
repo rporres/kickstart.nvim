@@ -110,11 +110,13 @@ vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
+-- Clipboard configuration
+--  By default, Neovim can sync with the OS clipboard ('unnamedplus'), but this
+--  causes yanks and deletes to overwrite whatever you copied from other apps.
+--  Disabled so the system clipboard remains independent from Neovim registers.
+--  Use "+y to yank to system clipboard, "+p to paste from it when needed.
 --  See `:help 'clipboard'`
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+-- vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
 vim.o.breakindent = true
